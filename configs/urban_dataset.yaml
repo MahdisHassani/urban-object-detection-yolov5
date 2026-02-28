@@ -1,0 +1,12 @@
+path: /content/Data
+train: images/train
+val: images/val
+
+nc: 6
+names:
+  0: bicycle
+  1: bus
+  2: car
+  3: motorbike
+  4: person
+  5: train
