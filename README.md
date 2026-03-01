@@ -57,6 +57,7 @@ Only image resolution was changed to ensure a fair comparison.
 | mAP50      | 0.766 | 0.803 |
 | mAP50-95   | 0.478 | 0.492 |
 | Recall     | 0.646 | 0.716 |
+| Precision  | 0.874 | 0.849 |
 
 Increasing input resolution improved recall significantly.
 
@@ -98,3 +99,118 @@ This confirms that object detection performance is highly sensitive to input res
 - Medium-sized objects generate most false positives.
 - Class imbalance affects precision in minority classes.
 - Resolution scaling is an effective improvement strategy for small objects.
+
+---
+
+## Setup & Usage
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/MahdisHassani/urban-object-detection-yolov5.git
+cd urban-object-detection-yolov5
+```
+
+---
+
+### 2️⃣ Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### 3️⃣ Download YOLOv5
+
+Clone YOLOv5 inside the project directory:
+
+```bash
+git clone https://github.com/ultralytics/yolov5.git
+```
+
+---
+
+### 4️⃣ Download Dataset
+
+Download Pascal VOC 2007 from:
+
+http://host.robots.ox.ac.uk/pascal/VOC/voc2007/
+
+Place it inside:
+
+```
+dataset/
+```
+
+---
+
+### 5️⃣ Create Urban Subset
+
+Generate filtered urban dataset:
+
+```bash
+python data_processing/create_urban_dataset.py
+```
+
+This will create:
+
+```
+dataset_urban/
+```
+
+---
+
+### 6️⃣ Run Density Analysis
+
+To analyze object density distribution:
+
+```bash
+python analysis/density_analysis.py
+```
+
+This script computes:
+- Average objects per image
+- Traffic level classification (low / medium / high)
+- Top crowded images
+
+---
+
+### 7️⃣ Train the Model
+
+Example (Image size = 640):
+
+```bash
+cd yolov5
+python train.py --img 640 --batch 2 --epochs 40 --data ../configs/urban_dataset.yaml --weights yolov5n.pt
+```
+
+After training, copy the best model to:
+
+```
+weights/best.pt
+```
+
+---
+
+### 8️⃣ Run Size-Based Evaluation
+
+```bash
+python analysis/size_based_evaluation.py
+```
+
+---
+
+### 9️⃣ Run Per-Class Evaluation
+
+```bash
+python analysis/per_class_evaluation.py
+```
+
+---
+
+## Notes
+
+- Dataset and trained weights are not included due to size limitations.
+- Make sure folder structure is preserved.
+- Scripts use relative paths for portability.
