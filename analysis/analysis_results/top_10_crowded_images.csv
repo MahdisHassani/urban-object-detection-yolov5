@@ -1,0 +1,11 @@
+image,bicycle,bus,car,motorbike,person,train,total_objects,traffic_level
+007305.jpg,0,3,11,2,3,0,19,high
+003760.jpg,1,0,0,1,13,0,15,high
+005071.jpg,0,0,14,0,0,0,14,high
+008775.jpg,0,0,0,1,13,0,14,high
+009034.jpg,0,0,0,6,8,0,14,high
+005554.jpg,5,0,0,0,8,0,13,high
+002069.jpg,5,0,0,0,7,0,12,high
+002965.jpg,0,0,0,0,12,0,12,high
+003589.jpg,1,0,0,0,11,0,12,high
+008105.jpg,0,0,9,0,3,0,12,high
